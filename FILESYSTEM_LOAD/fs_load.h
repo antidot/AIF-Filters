@@ -1,6 +1,6 @@
 /*
 * Copyright 2013 Antidot opensource@antidot.net
-* https://github.com/antidot/afs_filesystem_load
+https://github.com/antidot/AIF-Filters/
 *
 * afs_filesystem_load is free software; you can redistribute it and/or
 * modify it under the terms of the GNU General Public License as
