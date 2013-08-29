@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Filter xmlns="http://ref.antidot.net/v7/afs#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://ref.antidot.net/v7/afs# http://ref.antidot.net/v7.6/filter.xsd" 
+    uri="filter:afs:rdb_rdfize" 
+    type="generator" 
+    category="misc" 
+    label="Db2Triples generator" 
+    singleton="true" 
+    pkg="antidot-paf-java">
+    
+    <description>This filter generates RDF data from SQL databases using DirectMapping or RDB2RML norms.</description>
+    
+    <parameter name="rdb2rdf_mode" type="string" mandatory="true">
+        <description>Choice between DirectMapping or R2RML</description>
+        <examples>Valid choices are "DirectMapping" or "R2RML"</examples>
+    </parameter>
+
+    <parameter name="login" type="string" mandatory="true">
+        <description>Login to connect to the SQL database</description>
+    </parameter>
+    
+    <parameter name="password" type="string" mandatory="true">
+        <description>Password to connect to the SQL database</description>
+    </parameter>
+    
+    <parameter name="url" type="string" mandatory="true">
+        <description>Url to connect to the database. Please refer to Jdbc driver implementation for full details.</description>
+        <examples>jdbc:mysql://localhost/mydb?characterEncoding=utf8&amp;sessionVariables=sql_mode='ANSI',storage_engine=InnoDB</examples>
+    </parameter>
+    
+    <parameter name="driver" type="string" mandatory="true">
+        <description>Choice the Jdbc driver</description>
+        <examples>Currently, only "com.mysql.jdbc.Driver" and "org.postgresql.Driver" have been tested and patched to respect the W3C norms.
+        You MAY try another Jdbc driver, without any warranties.</examples>
+    </parameter>
+    
+    <parameter name="base_uri" type="string" mandatory="false" ifUnset="http://foo.example/DB/">
+        <description>The "base uri" used by the norm to prefix generated uris. 
+            In addition, it will be the PaF document uri if RDf is always saved as a PaF document.</description>
+    </parameter>
+
+    <parameter name="r2rml_file" type="string" mandatory="false" ifUnset="Critical if R2RML mode, not read if DirectMapping mode" autoSetDefault="false">
+        <description>The r2rml file if using R2RML mode</description>
+    </parameter>
+    
+    <parameter name="create_doc_with_base_uri" type="boolean" mandatory="false" ifUnset="false">
+        <description>True if the user wants to keep the RDF as a layer of a new document</description>
+    </parameter>
+    
+    <parameter name="output_layer" type="layer" mandatory="false" ifUnset="CONTENTS">
+        <description>A layer to save RDF if the user wants the RDF as a layer of e new document</description>
+    </parameter>
+
+    <parameter name="rdf_format" type="string" mandatory="false" ifUnset="RDF/XML">
+        <description>The RDF final format if RDF has to be saved in a layer of a new document.</description>
+        <examples>RDF/XML, N3, TURTLE, etc.</examples>
+    </parameter>
+
+    <parameter name="nativestore_path" type="string" mandatory="false" ifUnset="Memory store" autoSetDefault="false">
+        <description>The path to a native store if the user wants to use a Sesame native store. Otherwise, transform is made in memory</description>
+    </parameter>
+        
+</Filter>

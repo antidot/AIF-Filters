@@ -1,0 +1,29 @@
+Release Notes afs_filesystem_load v1.0.0
+
+Released on 07/03/2013
+
+1. Initial features
+
+1.1. Generic filesystem exploration
+
+  * Provides mechanism to load a given URI from a remote filesystem into the PaF
+  * Supported protocols: NFS and Samba
+  * Loads all directories/files under the input document's URI
+  * If running in incremental PaF:
+    - handles deletion of files
+    - updates files after checking modification time
+  * If running in secure mode, loads permissions of directories/filesystem
+
+1.2. Options
+
+  * User-defined mapping for UID/GIDs (unix) or SIDs (windows) in permissions
+  * Include/exclude list of patterns to reduce the scope of filesystem exploration
+
+1.3. NFS-specific features
+
+  * Automatically mount/umount the filesystem using sudo privilege
+
+1.4. Samba-specific features
+
+  * Handles user/password Samba authentication
+  * Converts MS Windows access-lists into AFS search access rights

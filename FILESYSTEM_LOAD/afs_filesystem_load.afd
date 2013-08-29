@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Filter xmlns="http://ref.antidot.net/v7/afs#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://ref.antidot.net/v7/afs# http://ref.antidot.net/v7.6/filter.xsd"
+    uri="filter:afs:filesystem_load"
+    type="processor" 
+    category="connect" 
+    label="Filesystem Load"
+    pkg="antidot-paf-misc">
+    <description>The afs_filesystem_load filter enables indexing the content of a distant filesystem using NFS or SAMBA.</description>
+    <parameter name="output_layer" type="layer" mandatory="false" ifUnset="CONTENTS">
+        <description>Layer filled with each document.</description>
+    </parameter>
+    <parameter name="protocol" type="string" mandatory="true">
+        <description>Filesystem protocol. Valid values are:
+        - nfs : Network File System
+        - smb : Samba File System
+        </description>
+    </parameter>
+    <parameter name="host" type="string" mandatory="true">
+        <description>Remote host fully qualified name or IP address.</description>
+    </parameter>
+    <parameter name="user" type="string" mandatory="false" autoSetDefault="false">
+        <description>Remote user, leave empty for $AFS7_USER.</description>
+    </parameter>
+    <parameter name="password" type="string" mandatory="false" autoSetDefault="false">
+        <description>Remote user password</description>
+    </parameter>
+    <parameter name="workgroup" type="string" mandatory="false" ifUnset="WORKGROUP">
+        <description>If applicable, remote user workgroup.</description>
+    </parameter>
+    <parameter name="root_directory" type="string" mandatory="true">
+        <description>Remote root directory or share name.</description>
+    </parameter>
+    <parameter name="mount_point" type="directory" mandatory="false" autoSetDefault="false">
+        <description>If applicable, local mount point.</description>
+    </parameter>
+    <parameter name="mount_options" type="string" mandatory="false" autoSetDefault="false">
+        <description>If applicable, mount options.</description>
+    </parameter>
+    <parameter name="user_ids_to_names" type="map" autoSetDefault="false">
+        <description>Map uids or sids to user names.</description>
+    </parameter>
+    <parameter name="group_ids_to_names" type="map" autoSetDefault="false">
+        <description>Map gids or sids to group names.</description>
+    </parameter>
+    <parameter name="exclude" type="list" autoSetDefault="false">
+        <description>List of patterns determining paths for files or directories to
+               ignore. This list takes precedence over the list of included patterns.
+               Patterns can include * for wildcard. Patterns case sensitivity depends
+               on the type of filesystem.
+         </description>
+    </parameter>
+    <parameter name="include" type="list" autoSetDefault="false">
+        <description>List of patterns determining paths for files or directories to
+               load. Leave empty to load all files and directories. Patterns can include
+               * for wildcard. Patterns case sensitivity depends on the type of filesystem.
+        </description>
+    </parameter>
+    <parameter name="skip_non_readable_files" type="boolean" mandatory="false" ifUnset="true">
+        <description>When true, the filter ignores non-readable files. If set to false, then these files are created and their status is set to KO.</description>
+    </parameter>
+</Filter>

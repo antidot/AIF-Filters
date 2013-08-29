@@ -1,0 +1,21 @@
+afs_filesystem_load - AFS Filter for Remote filesystem import
+GPL License
+https://github.com/antidot/afs_filesystem_load
+http://www.antidot.net/
+
+Notice
+======
+
+This program requires linking to AFS (Copyright Antidot) libraries to compile and run.
+
+
+Dependencies
+============
+
+This program requires libsmbclient v2.3 or higher.
+
+
+Contacts
+========
+
+opensource@antidot.net
