@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>net.antidot</groupId>
+  <!-- Your jar will be called "artifactid.jar" -->
+  <artifactId>template_filter</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <description>Template PaF API filter</description>
+  <packaging>jar</packaging>
+  <prerequisites>
+    <maven>2.2.1</maven>
+  </prerequisites>
+
+  <properties>
+    <!-- Name here the main class which has to be launched -->
+    <classname>ProcTemplate</classname>
+    <!-- The "afs_PaF_api.jar" location in the compile machines.-->
+    <paf_api_build_location>/usr/local/afs7/lib/java/afs_PaF_api.jar</paf_api_build_location>
+    <!-- The "protobuf.jar" location in the compile machines.-->
+    <afsprotobuf_location>/usr/local/afs7/lib/java/afsprotobuf.jar</afsprotobuf_location>
+    <!-- List here the locations of basic jars in unix production computers.
+         /usr/local/afs7/lib/java/afs_PaF_api.jar
+         /usr/local/afs7/lib/java/afsprotobuf.jar
+         /usr/local/afs7/lib/java/protobuf-java-2.4.1.jar
+    -->
+    <basic_classpath>/usr/local/afs7/lib/java/afs_PaF_api.jar /usr/local/afs7/lib/java/afsprotobuf.jar /usr/local/afs7/lib/java/protobuf-java-2.4.1.jar</basic_classpath>
+    <!-- List here the locations of your jars in unix production computers -->
+    <user_classpath></user_classpath>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.google.protobuf</groupId>
+      <artifactId>protobuf-java</artifactId>
+      <version>2.5.0</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.mockito</groupId>
+        <artifactId>mockito-all</artifactId>
+        <version>1.9.5</version>
+        <scope>test</scope>
+    </dependency>
+    <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.11</version>
+        <scope>test</scope>
+    </dependency>
+    <dependency>
+        <groupId>net.antidot</groupId>
+        <artifactId>afs_PaF_api</artifactId>
+        <version>7.6</version>
+        <scope>system</scope>
+        <systemPath>${paf_api_build_location}</systemPath>
+    </dependency>
+    <dependency>
+      <groupId>net.antidot</groupId>
+      <artifactId>protobuf</artifactId>
+        <version>7.6</version>
+        <scope>system</scope>
+        <systemPath>${afsprotobuf_location}</systemPath>
+    </dependency>
+  </dependencies>
+
+	<build>
+	    <finalName>${project.artifactId}</finalName>
+		<plugins>
+           <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-compiler-plugin</artifactId>
+              <version>3.1</version>
+              <configuration>
+                <source>1.6</source>
+                <target>1.6</target>
+              </configuration>
+            </plugin>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-jar-plugin</artifactId>
+              <configuration>
+                 <archive>
+                    <manifest>
+                       <addClasspath>false</addClasspath>
+                       <mainClass>${classname}</mainClass>
+                    </manifest>
+                    <manifestEntries>
+                       <Class-Path>${basic_classpath} ${user_classpath}</Class-Path>
+                    </manifestEntries>
+                 </archive>
+              </configuration>
+            </plugin>
+		</plugins>
+	</build>
+</project>
