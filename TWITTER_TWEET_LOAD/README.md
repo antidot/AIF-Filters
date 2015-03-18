@@ -7,6 +7,7 @@
 **Description**: AFSv7 PaF generator filter used to get tweets from given users timelines, and generate a new document for each tweet
 
 **Features**:
+
 	- Relies on [Twython](http://twython.readthedocs.org/en/latest/) library (Git repository: git://github.com/ryanmcgrath/twython.git)
 	
 	- Works with the new Twitter API v1.1
@@ -14,6 +15,7 @@
 	- For each tweet, the current user name is stored in the x_id identifier
 
 **Parameters**:
+
 	- consumer_key / consumer_secret / access_token / access_secret : OAuth settings and Access token parameters (to sign requests with your own Twitter account) from  [http://dev.twitter.com/](http://dev.twitter.com/)
 	
 	- users : List of Twitter users used 
@@ -23,6 +25,7 @@
 	- output_layer (optional, default : CONTENTS, Layer) : the output layer
 
 **Requirements** : 
+
 	- Setuptools 3 : python3-setuptools
 	
 	- Requests : antidot-python33-requests
