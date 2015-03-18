@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Filter xmlns="http://ref.antidot.net/v7/afs#" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://ref.antidot.net/v7/afs# http://ref.antidot.net/v7.6/filter.xsd"
+    uri="filter:user:twitter_tweet_load" 
+    type="generator" 
+    category="connect" 
+    label="Twitter Tweet Load"
+    exe="twitter_tweet_load"
+    singleton="false"
+    source="true"
+    >
+
+    <description>Antidot training filter to get tweets from given users timelines.</description>
+
+    <details>That filter get tweets from users given as parameters. It needs to get OAuth identifiers (consumer key / secret and access token/secret) from http://dev.twitter.com/</details>
+
+    <parameter name="output_layer" type="layer" mandatory="false" ifUnset="CONTENTS">
+        <description>The layer to store tweets</description>
+    </parameter>
+
+    <parameter name="consumer_key" type="string" mandatory="true">
+        <description>Consumer key value</description>
+    </parameter>
+
+    <parameter name="consumer_secret" type="string" mandatory="true">
+        <description>Consumer secret value</description>
+    </parameter>
+
+    <parameter name="access_key" type="string" mandatory="true">
+        <description>Access key value</description>
+    </parameter>
+
+    <parameter name="access_secret" type="string" mandatory="true">
+        <description>Access secret value</description>
+    </parameter>
+
+    <parameter name="users" type="list" mandatory="true">
+    	<description>List of Twitter users</description>
+    </parameter>
+
+    <parameter name="max" type="integer" mandatory="false" ifUnset="100">
+    	<description>Max number of tweets to get per user (NB: Twitter API v1.1 automatically limits to 200 tweets)</description>
+    </parameter>
+
+</Filter>
