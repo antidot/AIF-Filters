@@ -8,19 +8,27 @@
 
 **Features**:
 	- Relies on [Twython](http://twython.readthedocs.org/en/latest/) library (Git repository: git://github.com/ryanmcgrath/twython.git)
+	
 	- Works with the new Twitter API v1.1
+	
 	- For each tweet, the current user name is stored in the x_id identifier
 
 **Parameters**:
 	- consumer_key / consumer_secret / access_token / access_secret : OAuth settings and Access token parameters (to sign requests with your own Twitter account) from  [http://dev.twitter.com/](http://dev.twitter.com/)
+	
 	- users : List of Twitter users used 
+	
 	- max (default : 100) : Max number of tweets to retrieve per user
+	
 	- output_layer (optional, default : CONTENTS, Layer) : the output layer
 
 **Requirements** : 
 	- Setuptools 3 : python3-setuptools
+	
 	- Requests : antidot-python33-requests
+	
 	- Requests Oauthlib : https://pypi.python.org/packages/source/r/requests-oauthlib/requests-oauthlib-0.3.3.tar.gz
+	
 	- OAuthlib :  https://pypi.python.org/packages/source/o/oauthlib/oauthlib-0.6.0.tar.gz
 
 
